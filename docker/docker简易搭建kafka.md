@@ -2,7 +2,7 @@
 
 ```
 docker pull zookeeper
-docker run -d -v /root/data/zookeeper/data:/data -v /root/data/zookeeper/datalog:/datalog -e ZOO_MY_ID=1 -e ZOO_SERVERS='server.1=106.14.175.92:2888:3888' --net=host --name zookeeper --privileged zookeeper
+docker run -d -v /root/data/zookeeper/data:/data -v /root/data/zookeeper/datalog:/datalog -e ZOO_MY_ID=1 -e ZOO_SERVERS='server.1=106.14.175.92:2181' -p 2181:2181 --net=host --name zookeeper --privileged zookeeper
 ```
 ## 第二步 创建kafka环境
 
