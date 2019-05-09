@@ -1,14 +1,13 @@
 ## 第一步 搭建zookeeper环境
 
 ```
-docker pull zookeeper
-docker run -d -v /root/data/zookeeper/data:/data -v /root/data/zookeeper/datalog:/datalog -e ZOO_MY_ID=1 -e ZOO_SERVERS='server.1=106.14.175.92:2181' -p 2181:2181 --net=host --name zookeeper --privileged zookeeper
+docker pull wurstmeister/zookeeper
+docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
 ```
 ## 第二步 创建kafka环境
 
 ```
-docker pull wurstmeister/kafka
-docker run  -d --name kafka -p 9092:9092  --env KAFKA_ADVERTISED_HOST_NAME=localhost  -e KAFKA_ZOOKEEPER_CONNECT=106.14.175.92:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://106.14.175.92:9092  -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_HEAP_OPTS="-Xmx256M -Xms128M"  --net=host wurstmeister/kafka 
+docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=106.14.175.92:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://106.14.175.92:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka
 ```
 注：由于docker kafka版本不断迭代，KAFKA_ADVERTISED_HOST_NAME 不再建议是用localhost/127.0.0.1,故需要使用KAFKA_ADVERTISED_HOST_NAME= ip地址
 
