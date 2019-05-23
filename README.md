@@ -6,7 +6,7 @@
       * [docker常用命令](docker/常用命令.md)
       * [安装Maven私服nexus3](docker/Maven私服:Docker安装nexus3.md)
       * [docker简易搭建kafka](docker/docker简易搭建kafka.md)
-     
+      * [使用docker进行FastDFS搭建](docker/使用docker进行FastDFS搭建.md)
   * [备注](remark.md)
   * [参考文献](ref.md)
 
