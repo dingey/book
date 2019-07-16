@@ -1,7 +1,7 @@
 ## 一、拉取镜像
 
 ```
-docker pull elasticsearch:6.8.0
+docker pull docker.io/elasticsearch:6.8.0
 ```
 ##二、运行
 ```
