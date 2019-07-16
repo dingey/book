@@ -8,7 +8,7 @@ docker run -d --name zookeeper -p 2181:2181 -t wurstmeister/zookeeper
 ## 第二步 创建kafka环境
 
 ```
-docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=106.14.175.92:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://106.14.175.92:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -t wurstmeister/kafka
+docker run -d --name kafka -p 9092:9092 -e KAFKA_BROKER_ID=0 -e KAFKA_ZOOKEEPER_CONNECT=106.14.175.92:2181 -e KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://106.14.175.92:9092 -e KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092 -e KAFKA_HEAP_OPTS="-Xmx256M -Xms256M" -m 256M --oom-kill-disable -t wurstmeister/kafka
 ```
 注：由于docker kafka版本不断迭代，KAFKA_ADVERTISED_HOST_NAME 不再建议是用localhost/127.0.0.1,故需要使用KAFKA_ADVERTISED_HOST_NAME= ip地址
 
