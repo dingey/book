@@ -1,10 +1,10 @@
-#一、创建文件夹
+# 一、创建文件夹
 ```
 mkdir -P /data/redis/7001/data
 ~~~
 ```
 
-#二、部署redis
+# 二、部署redis
 
 创建docker-compose.yml
 ```
@@ -76,14 +76,14 @@ services:
   - REDIS_PORT=7006
 ```
 
-#三、启动所有redis
+# 三、启动所有redis
 ```
 docker-compose up -d
 ```
 
-#四、部署cluster
+# 四、部署cluster
 ```
 docker run --rm -it inem0o/redis-trib create --replicas 1 106.14.175.92:7001 106.14.175.92:7002 106.14.175.92:7003 106.14.175.92:7004 106.14.175.92:7005 106.14.175.92:7006
 ```
-#附
+# 附
 开放7001:7006,17001:17006端口
