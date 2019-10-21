@@ -24,7 +24,7 @@ boot_id=`docker ps -a |grep webname |awk '{print $1}'`
 if [ -n "$boot_id" ]; then
 echo "Need stop $SpringBoot ........................"
 docker stop $boot_id
-docker rmi $boot_id
+docker rm $boot_id
 else echo "No need stop $SpringBoot ........................"
 fi
 
