@@ -1,3 +1,14 @@
+## 一、配置Dockfile
+```
+FROM openjdk:8-jdk-alpine
+VOLUME /tmp
+ADD target/order-service-1.0.0-SNAPSHOT.jar app.jar
+RUN sh -c 'touch /app.jar'
+ENV JAVA_OPTS=""
+ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -jar /app.jar" ]
+EXPOSE 8080
+```
+
 ## 一、配置jenkins
 ```
 mvn install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true dockerfile:build
@@ -5,17 +16,21 @@ mvn install -Dmaven.test.skip=true -Dmaven.javadoc.skip=true dockerfile:build
 
 ## 二、部署docker应用
 ```
-SpringBoot=app
+SpringBoot=webname
 
 echo "Stop $SpringBoot ........................"
-boot_id=`docker ps -a |grep web-admin |awk '{print $1}'`
+boot_id=`docker ps -a |grep webname |awk '{print $1}'`
+
+if [ -n "$boot_id" ]; then
+echo "Need stop $SpringBoot ........................"
 docker stop $boot_id
 docker rmi $boot_id
-
+else echo "No need stop $SpringBoot ........................"
+fi
 
 BUILD_ID=dontKillMe
 
-docker run -e JAVA_OPTS=‘-Xms128m -Xmx256m -Dspring.profiles.active=prod‘ --network=host --name web-admin -d -p 8080:8080 -t springio/app
+docker run -e JAVA_OPTS='-Xms128m -Xmx256m -Dspring.profiles.active=prod' --network=host --name webname -d -p 8080:8080 -t springio/app
 ```
 
 附POM配置
