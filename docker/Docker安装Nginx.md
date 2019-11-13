@@ -13,3 +13,9 @@ docker images nginx
 ```
 docker run --name mynginx -d -p 80:80 -v /conf/nginx.conf:/etc/nginx/nginx.conf -v /logs/nginx:/var/log/nginx -d docker.io/nginx 
 ```
+
+## 热更新
+
+```
+docker exec -i [nginx容器名/id] nginx -s reload
+```
