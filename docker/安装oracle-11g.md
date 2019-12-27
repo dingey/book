@@ -1,12 +1,17 @@
 ## 一、安装docker镜像
 
+### 下载官方压缩包
+```
+wget -c -b https://download.oracle.com/otn/linux/oracle11g/R2/linux.x64_11gR2_database_1of2.zip
+wget -c -b https://download.oracle.com/otn/linux/oracle11g/R2/linux.x64_11gR2_database_2of2.zip
+```
 ### 1、拉取镜像
 ```
-docker pull registry.cn-hangzhou.aliyuncs.com/qida/oracle-xe-11g
+docker pull jaspeen/oracle-11g
 ```
 ### 2、运行镜像
 ```
-docker run -d -p 1521:1521 --name oracle11 registry.cn-hangzhou.aliyuncs.com/qida/oracle-xe-11g
+docker run --privileged --name oracle11g -p 1521:1521 -v /install/database:/install jaspeen/oracle-11g
 ```
 ### 默认账号密码
 ```
