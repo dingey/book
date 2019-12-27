@@ -47,3 +47,14 @@ sudo curl -L "https://get.daocloud.io/docker/compose/releases/download/1.24.1/do
 
 sudo chmod +x /usr/local/bin/docker-compose
 ```
+
+11、加速镜像
+```
+vim /etc/docker/daemon.json
+
+{
+    "registry-mirrors": ["https://registry.docker-cn.com","http://hub-mirror.c.163.com"]
+}
+
+systemctl restart docker
+```
