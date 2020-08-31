@@ -87,3 +87,6 @@ docker run --rm -it inem0o/redis-trib create --replicas 1 106.14.175.92:7001 106
 ```
 # 附
 开放7001:7006,17001:17006端口
+```
+docker run -i -t -p 7000:7000 -p 7001:7001 -p 7002:7002 -p 7003:7003 -p 7004:7004 -p 7005:7005 -p 7006:7006 -p 7007:7007 grokzen/redis-cluster
+```
